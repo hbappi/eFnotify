@@ -1,6 +1,6 @@
-# linux-notify
+# eFnotify
 
-This command is simply forked from [https://github.com/vlevit/notify-send.sh](https://github.com/vlevit/notify-send.sh)
+This command is simply forked from [https://github.com/vlevit/eFnotify](https://github.com/vlevit/eFnotify)
 
 
 
@@ -8,11 +8,11 @@ This command is simply forked from [https://github.com/vlevit/notify-send.sh](ht
 
 ## Usage
 
-notify-send.sh has all command line options of notify-send with a few
+eFnotify has all command line options of notify-send with a few
 additional ones:
 
     Usage:
-      notify-send.sh [OPTION...] <SUMMARY> [BODY] - create a notification
+      eFnotify [OPTION...] <SUMMARY> [BODY] - create a notification
 
     Help Options:
       -?|--help                         Show help options
@@ -37,39 +37,39 @@ additional ones:
 
 So, for example, to notify a user of a new email we can run:
 
-    $ notify-send.sh --icon=mail-unread --app-name=mail --hint=string:sound-name:message-new-email Subject Message
+    $ eFnotify --icon=mail-unread --app-name=mail --hint=string:sound-name:message-new-email Subject Message
 
 To replace or close existing message first we should know its id. To
-get id we have to run notify-send.sh with `--print-id`:
+get id we have to run eFnotify with `--print-id`:
 
-    $ notify-send.sh --print-id Subject Message
+    $ eFnotify --print-id Subject Message
     10
 
 Now we can update this notification using `--replace` option:
 
-    $ notify-send.sh --replace=10 --print-id "New Subject" "New Message"
+    $ eFnotify --replace=10 --print-id "New Subject" "New Message"
     10
 
 Now we may want to close the notification:
 
-    $ notify-send.sh --close=10
+    $ eFnotify --close=10
 
 Use `--replace-file` to make sure that no more than one notification
 is created per file. For example, to increase volume by 5% and show
 the current volume value you can run:
 
-    $ notify-send.sh --replace-file=/tmp/volumenotification "Increase Volume" "$(amixer sset Master 5%+ | awk '/[0-9]+%/ {print $2,$5}')"
+    $ eFnotify --replace-file=/tmp/volumenotification "Increase Volume" "$(amixer sset Master 5%+ | awk '/[0-9]+%/ {print $2,$5}')"
 
 You can add a button to the notification with `-o` or `--default-action=`:
 
-    $ notify-send.sh "Subject" "Message" -o "Show another notification:notify-send.sh 'new Subject' 'New Message'"
+    $ eFnotify "Subject" "Message" -o "Show another notification:eFnotify 'new Subject' 'New Message'"
 
 You can specify multiple actions by passing `-o` multiple times. Use
 `-d` or `--default-action` for action which is usually invoked when
 notification area is clicked. Use `-l` or `--close-action` for action
 performed when notification is closed.
 
-    $ notify-send.sh "Subject" "Message" \
-        -d "notify-send.sh 'Default Action'" \
-        -o "Button Action:notify-send.sh 'Button Action'" \
-        -l "notify-send.sh 'Close Action'"
+    $ eFnotify "Subject" "Message" \
+        -d "eFnotify 'Default Action'" \
+        -o "Button Action:eFnotify 'Button Action'" \
+        -l "eFnotify 'Close Action'"
