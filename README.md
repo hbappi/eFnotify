@@ -1,6 +1,6 @@
 # eFnotify
 
-This command is simply forked from [https://github.com/vlevit/notify-send](https://github.com/vlevit/notify-send)
+This command is simply forked from [https://github.com/vlevit/notify-send.sh](https://github.com/vlevit/notify-send.sh)
 
 
 
